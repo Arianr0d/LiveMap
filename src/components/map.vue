@@ -73,6 +73,7 @@
       async mapClick(event){
         this.marker.position.lat = event.latlng.lat
         this.marker.position.lng = event.latlng.lng
+        console.log(event.latlng.lat, event.latlng.lng)
         this.marker.visible = true
         this.updateCoordinates(event)
       },
@@ -113,7 +114,7 @@
         geoData: {
           zoom: 15,
           center: latLng(52.6130549393468, 39.59747314453126),
-          url: 'https://tile.admlr.lipetsk.ru/osm_tiles/{z}/{x}/{y}.png',
+          url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
           attribution:
                   '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           currentZoom: 11.5,

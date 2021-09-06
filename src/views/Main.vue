@@ -1,5 +1,5 @@
 <template>
-    <!--<Map class="map"></Map>-->
+    <Map class="map"></Map>
 </template>
 
 <script>
@@ -15,8 +15,8 @@
 
 <style scoped>
     .map{
-        width: 45%;
-        height: 32.5vw;
+        
+        height: 50vw;
         z-index: 0;
     }
 </style>
