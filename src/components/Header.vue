@@ -4,8 +4,8 @@
             Provtour
         </h1>
         <div>
+            <img @click="search" src="../assets/img/findworld.svg">
             <input placeholder="Введите адрес" type="search" v-model="address">
-            <button @click="search">пава</button>
         </div>
         <img src="../assets/img/User.svg" @click="openModal = !openModal">
         <AuthorizForm :sign-in="openModal" :title-name="register" class="register"></AuthorizForm>
@@ -65,13 +65,17 @@
                 border: none;
                 outline: none;
                 padding-left: vw(23);
+                margin-left: vw(30);
+            }
+            img{
+                width: vw(23.3);
                 margin-left: vw(412);
             }
 
         }
         img{
             width: vw(23.3);
-            margin-left: vw(550);
+            margin-left: vw(530);
         }
     }
     .register{
