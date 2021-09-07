@@ -117,14 +117,9 @@
           url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
           attribution:
                   '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-          currentZoom: 11.5,
-          showParagraph: false,
           mapOptions: {
             zoomSnap: 0.5
-          },
-          showMap: true,
-          fillColor: "#e4ce7f",
-          enableTooltip: false,
+          }
         },
       }
     },
@@ -163,5 +158,10 @@
   }
 </script>
 
-<style scoped class="scss">
+<style class="scss">
+
+  .leaflet-left{
+    display: none;
+  }
+
 </style>
