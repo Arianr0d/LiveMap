@@ -112,8 +112,8 @@
         }),
 
         geoData: {
-          zoom: 15,
-          center: latLng(52.6130549393468, 39.59747314453126),
+          zoom: 8,
+          center: latLng(45.021126517829614, 39.00695800781251),
           url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
           attribution:
                   '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -163,6 +163,5 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped class="scss">
 </style>
