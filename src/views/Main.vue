@@ -3,17 +3,20 @@
         <Map class="map"></Map>
         <ButtonFilter class="button-filter"></ButtonFilter>
         <img src="../assets/img/problem.svg" class="problem">
+         <AddProblems></AddProblems>
     </div>
 </template>
 
 <script>
     import ButtonFilter from "../components/ButtonFilter";
+    import AddProblems from "../components/AddProblems"
     import Map from "../components/Map"
     export default {
         name: 'Main',
         components:{
-           Map,
-            ButtonFilter
+            Map,
+            ButtonFilter,
+            AddProblems
         }
     }
 </script>

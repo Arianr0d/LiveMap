@@ -8,7 +8,7 @@
             <input placeholder="Введите адрес" type="search" v-model="address">
         </div>
         <img src="../assets/img/User.svg" @click="openModal = !openModal">
-        <AuthorizForm :sign-in="openModal" :title-name="register" class="register"></AuthorizForm>
+        <AuthorizForm :signIn="openModal" :title-name="register" class="register"></AuthorizForm>
     </div>
 </template>
 
@@ -22,8 +22,8 @@
                 address:'',
                 openModal: false,
                 register:{
-                    titleName:"Регистрация",
-                    buttonName:"fafa"
+                    titleName:"Авторизоваться",
+                    buttonName:"Войти"
                 }
             }
         },
@@ -50,6 +50,7 @@
         align-items: center;
         padding: 0 vw(29) 0 vw(29);
         background: #569E9E;
+        font-family: 'Roboto';
 
         h1{
             font-size: vw(46);
@@ -68,7 +69,7 @@
                 margin-left: vw(10);
             }
             img{
-                width: vw(23.3);
+                width: vw(36.3);
                 margin-left: vw(412);
             }
 
