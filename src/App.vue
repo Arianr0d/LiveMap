@@ -34,7 +34,6 @@
   }
   input{
     font-family: 'Roboto';
-    color: #FFFFFF;
     border: none;
     background: none;
     outline: none;
