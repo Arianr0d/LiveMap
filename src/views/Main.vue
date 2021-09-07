@@ -2,6 +2,7 @@
     <div class="container">
         <Map class="map"></Map>
         <ButtonFilter class="button-filter"></ButtonFilter>
+        <img src="../assets/img/problem.svg" class="problem">
     </div>
 </template>
 
@@ -30,5 +31,11 @@
             top: 10%;
             left: 1%;
         }
+    }
+    .problem{
+        position: absolute;
+        z-index: 1000;
+        top: 15%;
+        left: 1%;
     }
 </style>
