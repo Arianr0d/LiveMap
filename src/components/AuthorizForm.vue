@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div v-if="signIn">
       <form action="POST">
          <p class="title">{{ titleName.titleName }}</p>
          <div class="group">
@@ -31,16 +31,36 @@ export default {
       titleName: { type: Object },
       signIn: {
          type: Boolean,
-         default: false
+         //default: false
       }
    }
 }
 
 </script>
 
-<style scoped>
-   * {
-      margin: 0;
-      padding: 0;
+<style scoped lang="scss">
+   @import "src/assets/css/function";
+   form{
+      display: flex;
+      flex-direction: column;
+
+      width: vw(398);
+      height: vw(538);
+      background: rgba(65, 62, 62, 0.53);
+      border: 1px solid rgba(134, 100, 100, 0.23);
+      box-sizing: border-box;
+      border-radius: 20px;
+      padding: vw(47) vw(63) vw(47) vw(63);
+      div{
+         margin-bottom: vw(66);
+      }
+
+      p{
+         width: 100%;
+      }
+   }
+   .inp{
+      color: #F5F1F1;
+      border-bottom: 4px solid #F4791F;;
    }
 </style>
