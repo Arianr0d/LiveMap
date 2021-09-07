@@ -44,13 +44,11 @@
   import 'leaflet/dist/leaflet.css';
   import "leaflet.markercluster/dist/MarkerCluster.css";
   import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+  import { mapState } from 'vuex';
 
   export default {
     name: 'Map',
     props:{
-      coord_map:{
-        type:Object
-      },
       checkSelect:{
         type: Boolean
       }
@@ -73,7 +71,7 @@
       async mapClick(event){
         this.marker.position.lat = event.latlng.lat
         this.marker.position.lng = event.latlng.lng
-        console.log(event.latlng.lat, event.latlng.lng)
+        //console.log(event.latlng.lat, event.latlng.lng)
         this.marker.visible = true
         this.updateCoordinates(event)
       },
@@ -124,6 +122,7 @@
       }
     },
     computed: {
+      ...mapState(['coord']),
       optionsMarket() {
         return {
           draggable: this.marker.draggable,
@@ -131,16 +130,15 @@
           autoPanSpeed: this.marker.autoPanSpeed,
           autoPanPadding: [150, 150]
         }
-      },
+      }
     },
     watch:{
-      'coord_map.lat':function (newVal, oldVal) {
-        this.marker.position.lat = newVal
-      },
-      'coord_map.lng':function (newVal, oldVal) {
-        this.marker.position.lng = newVal
+      'coord.coords':function (newVal, oldVal) {
+        this.marker.position.lat = newVal.lat
+        this.marker.position.lng = newVal.lon
         this.marker.visible = true
         this.geoData.center = this.marker.position
+        this.geoData.zoom = 15
       },
       checkSelect:function (newVal, oldVal) {
         this.marker.visible = newVal
