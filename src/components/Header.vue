@@ -65,7 +65,7 @@
                 border: none;
                 outline: none;
                 padding-left: vw(23);
-                margin-left: vw(30);
+                margin-left: vw(10);
             }
             img{
                 width: vw(23.3);
