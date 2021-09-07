@@ -7,17 +7,24 @@
             <input placeholder="Введите адрес" type="search" v-model="address">
             <button @click="search">пава</button>
         </div>
-        <img src="../assets/img/User.svg">
+        <img src="../assets/img/User.svg" @click="openModal = !openModal">
+        <AuthorizForm :sign-in="openModal" :title-name="register" class="register"></AuthorizForm>
     </div>
 </template>
 
 <script>
     import {mapActions} from "vuex";
+    import AuthorizForm from "./AuthorizForm";
     export default {
         name: "Header",
         data(){
             return{
-                address:''
+                address:'',
+                openModal: false,
+                register:{
+                    titleName:"Регистрация",
+                    buttonName:"fafa"
+                }
             }
         },
         methods:{
@@ -28,6 +35,9 @@
                 //this.$store.commit('setCoord', {lat : 53.32, lon: 32.56});
                 //console.log(res.suggestions[0].data)
             }
+        },
+        components:{
+            AuthorizForm
         }
     }
 </script>
@@ -63,5 +73,11 @@
             width: vw(23.3);
             margin-left: vw(550);
         }
+    }
+    .register{
+        position: absolute;
+        top: 30%;
+        left: 40%;
+        z-index: 1000;
     }
 </style>

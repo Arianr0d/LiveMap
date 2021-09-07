@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Header class="header"></Header>
+    <Header></Header>
     <router-view/>
   </div>
 </template>
@@ -31,6 +31,13 @@
   p{
     font-family: 'Roboto';
     color: #FFFFFF;
+  }
+  input{
+    font-family: 'Roboto';
+    color: #FFFFFF;
+    border: none;
+    background: none;
+    outline: none;
   }
   .main-container{
     display: flex;
