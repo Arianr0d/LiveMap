@@ -9,7 +9,7 @@
             <input type="password" class="inp" placeholder="Пароль"/>
          </div>
          <div>
-            <button type="button" class="button" id="btn" @click="visible = false" v-on:selected="autoUser(visible)">Войти</button>
+            <button type="button" class="button" id="btn" @click="visible = false">Войти</button>
          </div>
          <div class="bottom_group">
             <a class="link" href="">Забыли пароль?</a>
@@ -45,14 +45,7 @@ export default {
       signIn: { type: Boolean }
    },
    data() {
-      return {
-         visible: true
-      }
-   }, 
-   methods: {
-      autoUser(visible) {
-         this.$emit("selected", visible)
-      }
+      return { visible: true }
    }
 }
 

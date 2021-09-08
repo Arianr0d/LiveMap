@@ -7,8 +7,7 @@
             <img @click="search" src="../assets/img/findworld.svg">
             <input placeholder="Введите адрес" type="search" v-model="address">
         </div>
-        <img v-on:selected="!visible" src="../assets/img/User.svg" @click="openModal = !openModal">
-        <img  src="../assets/img/AuthUser.svg">
+        <img src="../assets/img/User.svg" @click="openModal = !openModal">
         <AuthorizForm v-if="openModal" :signIn="comeIn" class="register"></AuthorizForm>
     </div>
 </template>

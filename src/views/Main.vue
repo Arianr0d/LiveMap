@@ -2,8 +2,8 @@
     <div class="container">
         <Map class="map"></Map>
         <ButtonFilter class="button-filter"></ButtonFilter>
-        <img src="../assets/img/problem.svg" class="problem">
-         <AddProblems></AddProblems>
+        <img @click="openModal = !openModal" src="../assets/img/problem.svg" class="problem">
+         <AddProblems v-if="!openModal"></AddProblems>
     </div>
 </template>
 
@@ -17,6 +17,11 @@
             Map,
             ButtonFilter,
             AddProblems
+        },
+        data() {
+           return {
+              openModal: false
+           }
         }
     }
 </script>
