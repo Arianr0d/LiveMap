@@ -1,27 +1,39 @@
 <template>
    <div>
-      <form v-if="!signIn" action="POST">
-         <p class="title">{{ titleName.titleName }}</p>
-         <div class="group">
+      <form v-if="!signIn & visible" action="POST">
+         <p class="title">Авторизоваться</p>
+         <div>
             <input type="login" class="inp" placeholder="Логин"/>
          </div>  
-         <div v-if="signIn" class="group">
-            <input type="text" class="inp" placeholder="Почта"/>
-         </div>
-         <div class="group">
+         <div>
             <input type="password" class="inp" placeholder="Пароль"/>
          </div>
-         <div v-if="signIn" class="group">
+         <div>
+            <button type="button" class="button" id="btn" @click="visible = false" v-on:selected="autoUser(visible)">Войти</button>
+         </div>
+         <div class="bottom_group">
+            <a class="link" href="">Забыли пароль?</a>
+            <a class="link" @click="signIn = !signIn">Зарегистрироваться</a>
+         </div>
+      </form> 
+      <form v-if="signIn & visible" action="POST">
+         <p class="title">Зарегистрироваться</p>
+         <div>
+            <input type="login" class="inp" placeholder="Логин"/>
+         </div>  
+         <div>
+            <input type="text" class="inp" placeholder="Почта"/>
+         </div>
+         <div>
+            <input type="password" class="inp" placeholder="Пароль"/>
+         </div>
+         <div>
             <input type="password" class="inp" placeholder="Подтвердить пароль"/>
          </div>
          <div>
-            <button type="button" class="button" id="btn">{{ titleName.buttonName }}</button>
+            <button type="button" class="button" id="btn" @click="signIn = !signIn">Зарегистрироваться</button>
          </div>
-         <div class="bottom_group" v-if="!signIn">
-            <a class="link" href="">Забыли пароль?</a>
-            <a class="link" href="">Зарегистрироваться</a>
-         </div>
-      </form>      
+      </form>    
    </div>
 </template>
 
@@ -30,10 +42,16 @@
 export default {
    name: 'AuthorizForm',
    props: {
-      titleName: { type: Object },
-      signIn: {
-         type: Boolean,
-         //default: false
+      signIn: { type: Boolean }
+   },
+   data() {
+      return {
+         visible: true
+      }
+   }, 
+   methods: {
+      autoUser(visible) {
+         this.$emit("selected", visible)
       }
    }
 }
@@ -120,6 +138,7 @@ export default {
       color: #fff;
       text-decoration: none;
       font-size: vw(16);
+      cursor: pointer;
    } 
 
    .link:hover, .link:active {

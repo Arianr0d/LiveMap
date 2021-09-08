@@ -7,8 +7,9 @@
             <img @click="search" src="../assets/img/findworld.svg">
             <input placeholder="Введите адрес" type="search" v-model="address">
         </div>
-        <img src="../assets/img/User.svg" @click="openModal = !openModal">
-        <AuthorizForm :signIn="openModal" :title-name="register" class="register"></AuthorizForm>
+        <img v-on:selected="!visible" src="../assets/img/User.svg" @click="openModal = !openModal">
+        <img  src="../assets/img/AuthUser.svg">
+        <AuthorizForm v-if="openModal" :signIn="comeIn" class="register"></AuthorizForm>
     </div>
 </template>
 
@@ -17,14 +18,11 @@
     import AuthorizForm from "./AuthorizForm";
     export default {
         name: "Header",
-        data(){
+        data() {
             return{
                 address:'',
                 openModal: false,
-                register:{
-                    titleName:"Авторизоваться",
-                    buttonName:"Войти"
-                }
+                comeIn: false
             }
         },
         methods:{
