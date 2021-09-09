@@ -4,19 +4,22 @@
         <ButtonFilter class="button-filter"></ButtonFilter>
         <img @click="openModal = !openModal" src="../assets/img/problem.svg" class="problem">
          <AddProblems v-if="!openModal"></AddProblems>
+         <FiltersMap></FiltersMap>
     </div>
 </template>
 
 <script>
-    import ButtonFilter from "../components/ButtonFilter";
+    import ButtonFilter from "../components/ButtonFilter"
     import AddProblems from "../components/AddProblems"
+    import FiltersMap from "../components/FiltersMap.vue"
     import Map from "../components/Map"
     export default {
         name: 'Main',
         components:{
             Map,
             ButtonFilter,
-            AddProblems
+            AddProblems,
+            FiltersMap
         },
         data() {
            return {
