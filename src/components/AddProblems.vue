@@ -1,12 +1,12 @@
 <template>
    <form>
       <div>
-         <img class="group" src="../assets/img/titleicon.svg">
-         <p class="group">Добавление проблемы</p>
+         <img src="../assets/img/titleicon.svg">
+         <p>Добавление проблемы</p>
       </div>
       <div>
-         <input type="" class="inp design" placeholder="адрес"/>
-         <img src="../assets/img/Flag.svg">
+         <input type="text" class="inp design" placeholder="адрес"/>
+         <img class="inp design f_btn" src="../assets/img/Flag.svg">
          <!-- выпадающий список -->
       </div>
       <div>
@@ -43,7 +43,12 @@ export default {
       border: 1px solid rgba(134, 100, 100, 0.23);
       box-sizing: border-box;
       border-radius: 10px;
-       padding: vw(10) vw(10) vw(10) vw(10);
+      padding: vw(10) vw(20) vw(10) vw(20);
+
+      div {
+         display: flex;
+         padding-bottom: vw(10);
+      }
 
       img {
          width: vw(41);
@@ -51,10 +56,11 @@ export default {
       }
 
       p{
-         width: vw(230);
+         width: vw(220);
          color: #000;
          font-size: vw(20);
          text-decoration: underline;
+         padding: vw(10) vw(15) vw(30) vw(15);
       }
    }
 
@@ -78,7 +84,6 @@ export default {
       border: 1px solid #569E9E;
       box-sizing: border-box;
       border-radius: 5px;
-      color: #569E9E;
       font-size: vw(16);
       padding-left: vw(10);
    }
@@ -91,8 +96,21 @@ export default {
       color: #fff;
    }
 
-   .group {
+   .inp.design.f_btn {
+      margin-left: vw(10);
+      width: vw(40);
       display:inline-block;
+      padding-right: vw(5);
+   }
+
+   .inp.design.f_btn:hover {
+      background: #fff;
+   }
+
+   .img {
+      border: 1px solid #000000;
+      background: rgba(86, 158, 158, 0.86);
+      border-radius: 5px;
    }
 
    button {
@@ -104,5 +122,17 @@ export default {
       border: 2px solid #F4791F;
       box-sizing: border-box;
       border-radius: 5px;
+      margin-left: vw(10);
    }
+
+   button:hover {
+      background: #F4791F;
+      color: #fff;
+   }
+
+   .button_group {
+      position: flex;
+      margin: vw(40) auto vw(20) vw(80);
+   }
+
 </style>
