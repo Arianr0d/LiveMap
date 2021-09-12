@@ -9,7 +9,7 @@
          <img class="inp design f_btn" src="../assets/img/Flag.svg">
       </div>
       <div>
-         <drop-down-list-full :list="list" :nameSelect="nameSelect"></drop-down-list-full>
+         <drop-down-list-full :list="list" :nameSelect="nameSelect" ></drop-down-list-full>
       </div>
       <div>
          <textarea v-model="comment" class="inp com" placeholder="комментарий"/>
@@ -30,8 +30,10 @@ export default {
      return{
         address: '',
         comment: '',
-        nameSelect: "Проблемы",
-        list:[{value: 'грязь', id:1},{value: 'толпа', id:2}]
+        nameSelect: "проблемы",
+        list:[{value: 'грязь', id:1},{value: 'толпа', id:2},
+        {value: 'шумно', id:3},{value: 'воняет', id:4}],
+        isActive: false
      }
    },
    components:{

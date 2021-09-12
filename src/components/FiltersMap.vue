@@ -25,11 +25,11 @@ export default {
       return {
          listKeyWords: [
             {id: 1, value: 'грязь'},
-            {id: 1, value: 'мусор'},
-            {id: 1, value: 'шумно'},
-            {id: 1, value: 'светло'},
-            {id: 1, value: 'воняет'},
-            {id: 1, value: 'бздыхи'}
+            {id: 2, value: 'мусор'},
+            {id: 3, value: 'шумно'},
+            {id: 4, value: 'светло'},
+            {id: 5, value: 'воняет'},
+            {id: 6, value: 'бздыхи'}
          ], 
          buttonName: 'выбрать по ключевым словам:'
       }

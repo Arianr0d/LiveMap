@@ -7,9 +7,9 @@
          <img v-if="!openList" src="../assets/img/arrowDown.svg" @click="openList = !openList">
          <img v-else src="../assets/img/ArrowUp.svg" @click="openList = !openList">
       </div>
-      <select name="dropDown" id="ddl" v-if="openList" multiple>
-         <option v-for="item in list" :key="item.id" v-text="item.value"/>
-      </select>
+      <ul v-if="openList">
+         <li v-for="item in list" :key="item.id">{{ item.value }}</li>
+      </ul>
    </div>
 </template>
 
@@ -70,36 +70,43 @@ export default {
          height: vw(10);
       }
 
-      select {
+      ul {
          position: absolute;
          margin-top: vw(40);
+         list-style-type: none;
+         overflow: auto;
 
-         width: vw(287);
+         width: vw(286);
+         max-height: vw(119);
          font-family: 'Roboto';
          font-size: vw(16);
          border: 1px solid #569E9E;
-      }  
+      }
 
-      option {
+      ul::-webkit-scrollbar-thumb {
+         width: vw(16);
+         
+      }
+
+      li {
          height: vw(30);
-         width: vw(287);
+         width: vw(274);
          background: #fff;
          border: 1px solid #569E9E;
          padding-left: vw(10);
          color: #569E9E;
-         vertical-align: center;
+         vertical-align: middle;
          padding-top: vw(8);
       }
 
-      option:hover {
+      li:hover {
          background: #C6C6C6;
          color: #fff;
       }
 
-      option:focus {
+      .active {
          background: #569E9E;
          color: #fff;
       }
    }
-
 </style>
