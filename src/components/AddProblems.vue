@@ -7,7 +7,9 @@
       <div>
          <input v-model="address" type="text" class="inp design" placeholder="адрес"/>
          <img class="inp design f_btn" src="../assets/img/Flag.svg">
-         <!-- выпадающий список -->
+      </div>
+      <div>
+         <drop-down-list-full :list="list" :nameSelect="nameSelect"></drop-down-list-full>
       </div>
       <div>
          <textarea v-model="comment" class="inp com" placeholder="комментарий"/>
@@ -21,13 +23,19 @@
 
 <script>
    import {mapActions, mapState} from 'vuex';
+   import DropDownListFull from "./DropDownListFull";
 export default {
    name: 'AddProblems',
    data(){
      return{
         address: '',
-        comment: ''
+        comment: '',
+        nameSelect: "Проблемы",
+        list:[{value: 'грязь', id:1},{value: 'толпа', id:2}]
      }
+   },
+   components:{
+     DropDownListFull
    },
    methods:{
       ...mapActions(['getCoordbyAddressProblem']),
@@ -67,7 +75,6 @@ export default {
       font-family: 'Roboto';
 
       width: vw(334);
-      height: vw(358);
       background: #fff;
       border: 1px solid rgba(134, 100, 100, 0.23);
       box-sizing: border-box;

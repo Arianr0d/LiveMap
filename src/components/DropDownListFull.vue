@@ -19,7 +19,7 @@ export default {
    name: 'DropDownListFull',
    props: {
       list: {
-         type: Object,
+         type: Array,
          default() { return [] }
       },
       nameSelect: { type: String }
