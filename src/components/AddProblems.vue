@@ -10,7 +10,7 @@
          <!-- выпадающий список -->
       </div>
       <div>
-         <input class="inp" placeholder="комментарий"/>
+         <textarea class="inp com" placeholder="комментарий"/>
       </div>
       <div class="button_group">
          <button type="button">Отменить</button>
@@ -77,15 +77,17 @@ export default {
       padding-left: vw(10);
    }
 
-   .inp {
+   .inp.com {
       width: vw(286);
-      height: vw(35);
+      height: vw(100);
       background: rgba(255, 255, 255, 0.86);
       border: 1px solid #569E9E;
       box-sizing: border-box;
       border-radius: 5px;
       font-size: vw(16);
       padding-left: vw(10);
+      outline: none;
+      margin-top: vw(20);
    }
 
    .inp::-webkit-input-placeholder { 
