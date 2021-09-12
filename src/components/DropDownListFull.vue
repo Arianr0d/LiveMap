@@ -65,7 +65,7 @@ export default {
       }
 
       img {
-         margin-left: vw(-25);
+         margin-left: vw(-31);
          margin-top: vw(13);
          width: vw(18);
          height: vw(10);

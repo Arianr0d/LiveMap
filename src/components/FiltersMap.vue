@@ -5,7 +5,10 @@
          <p>Фильтры карты</p>
       </div>
       <div>
-         <DropDownListFull :nameSelect="buttonName" :list="listKeyWords"></DropDownListFull>
+         <DropDownListPart :nameSelect="buttonCategory" :list="listCategory"></DropDownListPart>
+      </div>
+      <div>
+         <DropDownListFull :nameSelect="buttonKeyWord" :list="listKeyWord"></DropDownListFull>
       </div>
       <div class="button_group">
          <button type="button">Применить</button>
@@ -14,16 +17,26 @@
 </template>
 
 <script>
+import DropDownListPart from "../components/DropDownListPart.vue"
 import DropDownListFull from '../components/DropDownListFull.vue'
 
 export default {
    name: 'FiltersMap',
    components: {
+      DropDownListPart,
       DropDownListFull
    },
    data() {
       return {
-         listKeyWords: [
+         listCategory: [
+            {id: 1, value: 'грязь'},
+            {id: 2, value: 'мусор'},
+            {id: 3, value: 'шумно'},
+            {id: 4, value: 'светло'},
+            {id: 5, value: 'воняет'},
+            {id: 6, value: 'бздыхи'}
+         ],
+         listKeyWord: [
             {id: 1, value: 'грязь'},
             {id: 2, value: 'мусор'},
             {id: 3, value: 'шумно'},
@@ -31,7 +44,8 @@ export default {
             {id: 5, value: 'воняет'},
             {id: 6, value: 'бздыхи'}
          ], 
-         buttonName: 'выбрать по ключевым словам:'
+         buttonCategory: 'категория проблем:',
+         buttonKeyWord: 'выбрать по ключевым словам:'
       }
    }
 }
@@ -58,6 +72,7 @@ export default {
       div {
          display: flex;
          padding-bottom: vw(10);
+         margin-bottom: vw(-5);
 
          img {
             width: vw(41);
@@ -94,6 +109,6 @@ export default {
 
    .button_group {
       position: flex;
-      margin: vw(40) auto vw(20) vw(80);
+      margin: vw(15) auto vw(10) vw(80);
    }
 </style>
