@@ -5,7 +5,7 @@
          <p>Фильтры карты</p>
       </div>
       <div>
-         <!-- выпадающий список -->
+         <DropDownListFull :nameSelect="buttonName" :list="listKeyWords"></DropDownListFull>
       </div>
       <div class="button_group">
          <button type="button">Применить</button>
@@ -14,9 +14,26 @@
 </template>
 
 <script>
+import DropDownListFull from '../components/DropDownListFull.vue'
 
 export default {
-   name: 'FiltersMap'
+   name: 'FiltersMap',
+   components: {
+      DropDownListFull
+   },
+   data() {
+      return {
+         listKeyWords: [
+            {id: 1, value: 'грязь'},
+            {id: 1, value: 'мусор'},
+            {id: 1, value: 'шумно'},
+            {id: 1, value: 'светло'},
+            {id: 1, value: 'воняет'},
+            {id: 1, value: 'бздыхи'}
+         ], 
+         buttonName: 'выбрать по ключевым словам:'
+      }
+   }
 }
 </script>
 
