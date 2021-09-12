@@ -1,15 +1,18 @@
 <template>
    <form>
-      <div>
+      <div class="title">
          <img src="../assets/img/titleicon.svg">
          <p>Добавление проблемы</p>
       </div>
-      <div>
+      <div class="group">
          <input v-model="address" type="text" class="inp design" placeholder="адрес"/>
          <img class="inp design f_btn" src="../assets/img/Flag.svg">
       </div>
       <div>
-         <drop-down-list-full :list="list" :nameSelect="nameSelect" ></drop-down-list-full>
+         <drop-down-list-full :list="listProblems" :nameSelect="selectProblems" ></drop-down-list-full>
+      </div>
+      <div>
+         <drop-down-list-full :list="listKeyWord" :nameSelect="selectKeyWord" ></drop-down-list-full>
       </div>
       <div>
          <textarea v-model="comment" class="inp com" placeholder="комментарий"/>
@@ -24,16 +27,19 @@
 <script>
    import {mapActions, mapState} from 'vuex';
    import DropDownListFull from "./DropDownListFull";
+
 export default {
    name: 'AddProblems',
    data(){
      return{
         address: '',
         comment: '',
-        nameSelect: "проблемы",
-        list:[{value: 'грязь', id:1},{value: 'толпа', id:2},
+        selectProblems: "выбрать проблему:",
+        selectKeyWord: "выбрать по ключевым словам:",
+        listProblems:[{value: 'грязь', id:1},{value: 'толпа', id:2},
         {value: 'шумно', id:3},{value: 'воняет', id:4}],
-        isActive: false
+        listKeyWord:[{value: 'грязь', id:1},{value: 'толпа', id:2},
+        {value: 'шумно', id:3},{value: 'воняет', id:4}]
      }
    },
    components:{
@@ -85,7 +91,13 @@ export default {
 
       div {
          display: flex;
-         padding-bottom: vw(10);
+      }
+
+      textarea {
+         font-family: 'Roboto';
+         font-size: vw(16);
+         padding-top: vw(5);
+         color: #569E9E;
       }
 
       img {
@@ -102,8 +114,12 @@ export default {
       }
    }
 
+   .title {
+      margin-bottom: vw(10);
+   }
+
    .inp.design {
-      width: vw(231);
+      width: vw(235);
       height: vw(35);
 
       font-size: vw(16);
@@ -125,7 +141,6 @@ export default {
       font-size: vw(16);
       padding-left: vw(10);
       outline: none;
-      margin-top: vw(20);
    }
 
    .inp::-webkit-input-placeholder { 
@@ -153,6 +168,10 @@ export default {
       border-radius: 5px;
    }
 
+   .group {
+      margin-bottom: vw(10);
+   }
+
    button {
       width: vw(93);
       height: vw(36);
@@ -171,7 +190,7 @@ export default {
    }
 
    .button_group {
-      margin: vw(40) auto vw(20) vw(80);
+      margin: vw(40) auto vw(10) vw(80);
    }
 
 </style>

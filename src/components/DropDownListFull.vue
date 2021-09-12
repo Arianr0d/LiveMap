@@ -39,6 +39,7 @@ export default {
       display: flex;
       justify-content: center;
       flex-direction: column;
+      margin-bottom: vw(2);
 
       div {
          display: inline-block;
