@@ -5,13 +5,10 @@ Vue.use(Vuex)
 
 export default{
     state: {
-        coords:{
-            lat: '',
-            lon: ''
-        }
+        problems:[]
     },
     actions: {
-        async getCoordbyAddress(ctx, address){
+        async getCoordbyAddressProblem(ctx, address){
             try {
                 //let url = `https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address`
                 let url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address"
@@ -24,8 +21,8 @@ export default{
         },
     },
     mutations: {
-        setCoord (state, coord) {
-            state.coords = coord
+        setCoordsProblem (state, problem) {
+            state.problems.push(problem)
         }
     }
 }

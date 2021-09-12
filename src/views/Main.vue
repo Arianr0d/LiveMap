@@ -3,7 +3,7 @@
         <Map class="map"></Map>
         <img @click="openModalFilter = !openModalFilter" src="../assets/img/Menu.svg" class="button-filter">
         <img @click="openModalProblem = !openModalProblem" src="../assets/img/problem.svg" class="problem">
-         <AddProblems v-if="openModalProblem" class="modal__problem"></AddProblems>
+         <AddProblems v-if="openModalProblem" @close="close" class="modal__problem"></AddProblems>
          <FiltersMap v-if="openModalFilter" class="modal__filter"></FiltersMap>
     </div>
 </template>
@@ -26,8 +26,8 @@
            }
         },
         methods:{
-            fun(){
-                console.log(1)
+            close(){
+                this.openModalProblem = false
             }
         }
     }

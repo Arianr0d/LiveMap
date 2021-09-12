@@ -15,6 +15,10 @@
               :attribution="geoData.attribution"
       />
 
+      <l-layer-group ref="features">
+        <l-popup > <span>{{caller}}</span></l-popup>
+      </l-layer-group>
+
       <l-marker
               :visible="marker.visible"
               :draggable="marker.draggable"
@@ -29,6 +33,18 @@
       >
       </l-marker>
 
+      <l-marker v-for="(mark, index) in problem.problems"
+                :visible="mark.visible"
+                :draggable="mark.draggable"
+                :options="optionsMarket"
+                :lat-lng="mark.position"
+                :icon="icon"
+                :autoPan="mark.autoPan"
+                :autoPanSpeed="mark.autoPanSpeed"
+                @click="openPopUp(mark.position, index)">
+
+      </l-marker>
+
     </l-map>
 
 
@@ -38,13 +54,14 @@
 <script>
 
   import {latLng} from "leaflet";
-  import {LMap, LTileLayer, LMarker, LPopup, LTooltip, LGeoJson} from "vue2-leaflet";
+  import {LMap, LTileLayer, LMarker, LPopup, LTooltip, LGeoJson, LLayerGroup} from "vue2-leaflet";
   import LeafletMarkercluster from "../components/LeafletMarkercluster";
 
   import 'leaflet/dist/leaflet.css';
   import "leaflet.markercluster/dist/MarkerCluster.css";
   import "leaflet.markercluster/dist/MarkerCluster.Default.css";
   import { mapState } from 'vuex';
+  import problem from "../store/models/problem";
 
   export default {
     name: 'Map',
@@ -59,6 +76,10 @@
       }, 0);
     },
     methods: {
+      openPopUp(latLng, index){
+        this.caller = this.problem.problems[index].comment
+        this.$refs.features.mapObject.openPopup(latLng);
+      },
       mouseOut() {
         this.marker.draggable = false
         this.marker.autoPan = false
@@ -71,7 +92,7 @@
       async mapClick(event){
         this.marker.position.lat = event.latlng.lat
         this.marker.position.lng = event.latlng.lng
-        //console.log(event.latlng.lat, event.latlng.lng)
+        console.log(event.latlng.lat, event.latlng.lng)
         this.marker.visible = true
         this.updateCoordinates(event)
       },
@@ -81,19 +102,21 @@
         //this.$emit('addCoords', event.latlng.lat, event.latlng.lng)
       },
       updateCenter(event) {
+        console.log(event.latlng)
         this.geoData.center = event.latlng
       },
       markerClick(e) {
         this.marker.autoPanSpeed = 13
       },
       zoomUpdate(zoom) {
-        this.geoData.currentZoom = zoom;
+        this.geoData.zoom = zoom
       },
     },
     data() {
       return {
         addressList: [],//координаты и адреса
         address: "",
+        caller:'',
         marker: {
           id: 1,
           position: {lat: 52.613, lng: 39.5974},
@@ -118,11 +141,11 @@
           mapOptions: {
             zoomSnap: 0.5
           }
-        },
+        }
       }
     },
     computed: {
-      ...mapState(['coord']),
+      ...mapState(['coord', 'problem']),
       optionsMarket() {
         return {
           draggable: this.marker.draggable,
@@ -140,6 +163,11 @@
         this.geoData.center = this.marker.position
         this.geoData.zoom = 15
       },
+      'problem.problems':function(newVal, oldVal){
+        console.log(newVal[newVal.length - 1].position)
+        this.geoData.center = newVal[newVal.length - 1].position
+        this.geoData.zoom = 15
+      },
       checkSelect:function (newVal, oldVal) {
         this.marker.visible = newVal
       }
@@ -151,6 +179,7 @@
       LPopup,
       LTooltip,
       LGeoJson,
+      LLayerGroup,
       'v-marker-cluster': LeafletMarkercluster,
     }
   }

@@ -5,24 +5,53 @@
          <p>Добавление проблемы</p>
       </div>
       <div>
-         <input type="text" class="inp design" placeholder="адрес"/>
+         <input v-model="address" type="text" class="inp design" placeholder="адрес"/>
          <img class="inp design f_btn" src="../assets/img/Flag.svg">
          <!-- выпадающий список -->
       </div>
       <div>
-         <textarea class="inp com" placeholder="комментарий"/>
+         <textarea v-model="comment" class="inp com" placeholder="комментарий"/>
       </div>
       <div class="button_group">
-         <button type="button">Отменить</button>
-         <button type="button">Добавить</button>
+         <button type="button" @click="close">Отменить</button>
+         <button @click="addProblem" type="button">Добавить</button>
       </div>
    </form>
 </template>
 
 <script>
-
+   import {mapActions, mapState} from 'vuex';
 export default {
-   name: 'AddProblems'
+   name: 'AddProblems',
+   data(){
+     return{
+        address: '',
+        comment: ''
+     }
+   },
+   methods:{
+      ...mapActions(['getCoordbyAddressProblem']),
+      async addProblem(){
+         let res = await this.getCoordbyAddressProblem(this.address)
+         let icon = L.icon({
+            iconUrl: require('@/assets/img/pin1.svg'),
+            iconSize: [40, 40],
+            iconAnchor: [16, 37]
+         })
+         this.$store.commit('setCoordsProblem', {
+            position:{lat : res.suggestions[0].data.geo_lat, lng: res.suggestions[0].data.geo_lon},
+            draggable: false,
+            visible: true,
+            autoPan: false,
+            autoPanSpeed: 13,
+            comment: this.comment,
+            icon: icon})
+         this.$emit('close')
+      },
+      close(){
+         this.$emit('close')
+      }
+   }
 }
 
 </script>
@@ -133,7 +162,6 @@ export default {
    }
 
    .button_group {
-      position: flex;
       margin: vw(40) auto vw(20) vw(80);
    }
 
